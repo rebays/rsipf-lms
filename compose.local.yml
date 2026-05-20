@@ -1,0 +1,60 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: rsipf-lms-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rsipf_lms
+    ports:
+      - "5432:5432"
+    volumes:
+      - rsipf_lms_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d rsipf_lms"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  minio:
+    image: minio/minio:latest
+    container_name: rsipf-lms-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio12345
+    ports:
+      - "9000:9000"   # S3 API
+      - "9001:9001"   # Web console
+    volumes:
+      - rsipf_lms_miniodata:/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9000/minio/health/live || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  minio-init:
+    image: minio/mc:latest
+    container_name: rsipf-lms-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        mc alias set local http://minio:9000 minio minio12345 &&
+        mc mb --ignore-existing local/rsipf-lms-media &&
+        mc anonymous set download local/rsipf-lms-media &&
+        mc cors set local/rsipf-lms-media /dev/stdin <<'EOF'
+        [{"AllowedOrigin":["http://localhost:3000"],"AllowedMethod":["GET","PUT","POST","HEAD"],"AllowedHeader":["*"],"ExposeHeader":["ETag"],"MaxAgeSeconds":3600}]
+        EOF
+        echo "bucket ready"
+    restart: "no"
+
+volumes:
+  rsipf_lms_pgdata:
+  rsipf_lms_miniodata:

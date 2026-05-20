@@ -1,0 +1,20 @@
+# Local-only artifacts that should never be shipped to Vercel.
+.env
+.env.local
+.env.*.local
+
+# Local docker-compose stack (Postgres + MinIO for dev only).
+compose.local.yml
+
+# Local media dir (uploads go to the cloud bucket on Vercel).
+media/
+
+# Debugging screenshots and dumps left behind by dev tooling.
+.tmp-*
+*.local.png
+
+# Build outputs and caches we don't want to upload.
+.next
+dist
+build
+node_modules
