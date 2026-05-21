@@ -46,15 +46,16 @@ export default buildConfig({
   },
   db: (() => {
     const factory = postgresAdapter({ pool: { connectionString: process.env.DATABASE_URI || '' } })
-    return (args: Parameters<typeof factory>[0]) => {
+    // Payload calls rejectInitializing() with no argument on connection failure,
+    // creating an unhandled Promise rejection. Attaching .catch() here before
+    // connect() runs ensures the rejection is always handled.
+    const wrapped: typeof factory = (args) => {
       const adapter = factory(args)
-      // Payload calls rejectInitializing() with no argument on connection failure,
-      // creating an unhandled Promise rejection. Attaching .catch() here before
-      // connect() runs ensures the rejection is always handled.
       ;(adapter as any).initializing?.catch(() => {})
       return adapter
     }
-  })() as unknown as ReturnType<typeof postgresAdapter>,
+    return wrapped
+  })(),
   plugins: [
     s3Storage({
       collections: {
