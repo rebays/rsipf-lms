@@ -1,20 +1,18 @@
 import { cookies } from 'next/headers'
 import { requireUser } from '@/lib/auth'
-import { MODULES } from '@/lib/data'
+import { MODULES, MODULE_GRADES } from '@/lib/data'
 
-const STATUS_LABEL: Record<string, string> = {
-  'ready-for-assessment': 'Ready for assessment',
-}
-
-const STATUS_BADGE: Record<string, string> = {
-  'ready-for-assessment': 'badge--success',
+function getStatusLabel(id: string, cookieStatus: string): { label: string; badge: string } {
+  if (MODULE_GRADES[id]) return { label: 'Assessment complete', badge: 'badge--info' }
+  if (cookieStatus === 'ready-for-assessment') return { label: 'Ready for assessment', badge: 'badge--success' }
+  return { label: 'Not started', badge: 'badge--neutral' }
 }
 
 export default async function ProgressPage() {
   await requireUser()
   const store = await cookies()
 
-  const getStatus = (id: string) =>
+  const getCookieStatus = (id: string) =>
     store.get(`module-${id}-status`)?.value ?? 'not-started'
 
   return (
@@ -38,15 +36,13 @@ export default async function ProgressPage() {
           </thead>
           <tbody>
             {MODULES.map((m) => {
-              const status = getStatus(m.id)
+              const { label, badge } = getStatusLabel(m.id, getCookieStatus(m.id))
               return (
                 <tr key={m.id}>
                   <td className="mono num text-gray-400">{String(m.order).padStart(2, '0')}</td>
                   <td className="font-semibold text-navy-800">{m.title}</td>
                   <td className="text-center">
-                    <span className={`badge ${STATUS_BADGE[status] ?? 'badge--neutral'}`}>
-                      {STATUS_LABEL[status] ?? 'Not started'}
-                    </span>
+                    <span className={`badge ${badge}`}>{label}</span>
                   </td>
                 </tr>
               )
