@@ -24,7 +24,7 @@ export default async function DashboardPage() {
       </section>
 
       <section>
-        <h2 className="t-h3 mb-4">Training modules</h2>
+        <h2 className="t-h3 mb-4">Your curriculum</h2>
         <div className="module-list">
           {MODULES.map((m) => (
             <Link key={m.id} href={`/modules/${m.id}`} className="module-item">
