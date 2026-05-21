@@ -15,6 +15,14 @@ export default async function DashboardPage() {
         </p>
       </header>
 
+      <section className="mb-8">
+        <div className="card card--accent" style={{ maxWidth: '280px' }}>
+          <p className="t-eyebrow">Progress</p>
+          <p className="t-display text-4xl mt-2">0 / {MODULES.length}</p>
+          <p className="t-mono mt-1">modules completed</p>
+        </div>
+      </section>
+
       <section>
         <h2 className="t-h3 mb-4">Training modules</h2>
         <div className="module-list">
