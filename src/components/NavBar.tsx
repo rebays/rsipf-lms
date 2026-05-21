@@ -28,10 +28,9 @@ export const NavBar = async () => {
       {user && (
         <div className="brandbar__nav">
           <Link href="/dashboard">Dashboard</Link>
-          <Link href="/courses">Courses</Link>
-          <Link href="/certificates">Certificates</Link>
+          <Link href="/reports">Reports</Link>
           {(user.role === 'admin' || user.role === 'instructor') && (
-            <Link href="/admin/courses">Manage</Link>
+            <Link href="/admin/modules">Manage</Link>
           )}
           {user.role === 'admin' && (
             <>

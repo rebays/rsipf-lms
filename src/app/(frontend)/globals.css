@@ -491,6 +491,55 @@
     padding: var(--sp-5);
   }
   .card--accent { border-top: 3px solid var(--gold-500); }
+  .card--link {
+    display: block; text-decoration: none; cursor: pointer;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .card--link:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.10); transform: translateY(-2px); }
+
+  /* Module list */
+  .module-list {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--gray-200); border-radius: var(--r-sm);
+    overflow: hidden; background: var(--white);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+  .module-item {
+    display: flex; align-items: center; gap: var(--sp-5);
+    padding: var(--sp-4) var(--sp-6);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gray-100);
+    border-left: 3px solid transparent;
+    transition: background 0.13s, border-left-color 0.13s;
+  }
+  .module-item:last-child { border-bottom: none; }
+  .module-item:hover {
+    background: var(--navy-50);
+    border-left-color: var(--gold-500);
+  }
+  .module-item__badge {
+    display: flex; align-items: center; justify-content: center;
+    width: 2.25rem; height: 2.25rem; border-radius: var(--r-sm);
+    background: var(--gray-100); color: var(--gray-500);
+    font-size: 0.7rem; font-weight: 800; font-variant-numeric: tabular-nums;
+    flex-shrink: 0; letter-spacing: 0.02em;
+  }
+  .module-item__body { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .module-item__title { font-weight: 600; color: var(--navy-800); font-size: var(--fs-base); line-height: 1.3; }
+  .module-item__meta { font-size: var(--fs-xs, 0.72rem); color: var(--gray-500); }
+  .module-item__arrow {
+    color: var(--gray-300); font-size: 1rem; flex-shrink: 0;
+    transition: transform 0.13s, color 0.13s;
+  }
+  .module-item:hover .module-item__arrow { transform: translateX(5px); color: var(--gold-500); }
+  .card--row {
+    display: flex; align-items: center; gap: var(--sp-4);
+    padding: var(--sp-4) var(--sp-5);
+  }
+  .card__icon  { flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; }
+  .card__body  { flex: 1; min-width: 0; }
+  .card__action { flex-shrink: 0; }
+  .card__cta   { display: block; font-size: var(--fs-sm); color: var(--gold-600); font-weight: 600; }
   .card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--sp-4); margin-bottom: var(--sp-3); }
   .card__title { font-weight: 700; color: var(--navy-800); font-size: var(--fs-h4); margin: 0; }
   .card__sub   { font-size: var(--fs-sm); color: var(--gray-600); margin: 2px 0 0; }
