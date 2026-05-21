@@ -77,7 +77,7 @@ export const LoginForm = () => {
           <span />
         </div>
       )}
-      <button type="submit" disabled={loading} className="btn btn--lg btn--full">
+      <button type="submit" disabled={loading} className="btn btn--lg flex w-full">
         {loading ? 'Signing in…' : 'Sign in'}
       </button>
     </form>

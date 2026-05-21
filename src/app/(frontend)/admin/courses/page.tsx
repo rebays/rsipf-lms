@@ -33,13 +33,13 @@ export default async function AdminCoursesPage() {
               <th>Status</th>
               <th>Category</th>
               <th>Duration</th>
-              <th className="th-actions">Actions</th>
+              <th className="w-40">Actions</th>
             </tr>
           </thead>
           <tbody>
             {courses.docs.map((c: any) => (
               <tr key={c.id}>
-                <td className="td-name">{c.title}</td>
+                <td className="font-semibold text-navy-800">{c.title}</td>
                 <td>
                   <span
                     className={`badge ${

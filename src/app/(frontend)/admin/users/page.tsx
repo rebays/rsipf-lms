@@ -37,7 +37,7 @@ export default async function AdminUsersPage() {
                 <td>
                   <a
                     href={`/admin/collections/users/${u.id}`}
-                    className="td-name"
+                    className="font-semibold text-navy-800"
                   >
                     {u.name}
                   </a>

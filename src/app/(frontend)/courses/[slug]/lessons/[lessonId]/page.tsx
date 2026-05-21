@@ -41,7 +41,7 @@ export default async function LessonPage({
 
   return (
     <div className="shell">
-      <nav className="crumbs crumbs--mb">
+      <nav className="crumbs mb-4">
         <Link href="/courses">Courses</Link>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polyline points="9 18 15 12 9 6" />
@@ -55,8 +55,8 @@ export default async function LessonPage({
 
       <header className="card card--accent mb-5">
         <span className="eyebrow">Lesson</span>
-        <h1 className="t-h2 card__heading">{lesson.title}</h1>
-        <p className="card__sub card__sub--mt">
+        <h1 className="t-h2 mt-2">{lesson.title}</h1>
+        <p className="card__sub mt-2">
           {lesson.type} · {lesson.duration || '—'} min
         </p>
       </header>
@@ -118,18 +118,12 @@ export default async function LessonPage({
         )}
       </section>
 
-      <LessonClient
-        lessonId={lesson.id}
-        courseId={course.id}
-        userId={user.id}
-      />
+      <LessonClient lessonId={lesson.id} courseId={course.id} userId={user.id} />
 
       {quizzes.docs.length > 0 && (
         <section className="card mt-5">
           <span className="eyebrow">Check your understanding</span>
-          <h2 className="t-h3 section__title">
-            Knowledge checks
-          </h2>
+          <h2 className="t-h3 mt-2 mb-4">Knowledge checks</h2>
           <div className="stack-3">
             {quizzes.docs.map((q: any) => (
               <div key={q.id} className="summary-row">

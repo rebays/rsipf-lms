@@ -41,7 +41,7 @@ export const LessonClient = ({
     <div className="card card--tinted">
       <div className="stage-nav stage-nav--flush">
         <div className="stage-nav__left">
-          <p className="t-base stage-nav__msg">
+          <p className="t-base m-0 text-(--gray-800)">
             Finished this lesson? Mark it complete to update your progress.
           </p>
         </div>
@@ -56,9 +56,7 @@ export const LessonClient = ({
         </div>
       </div>
       {message && (
-        <p className="t-mono lesson-msg">
-          {message}
-        </p>
+        <p className="t-mono mt-3">{message}</p>
       )}
     </div>
   )

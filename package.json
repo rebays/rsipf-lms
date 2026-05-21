@@ -9,7 +9,10 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "tsx --env-file=.env src/seed.ts",
-    "payload": "payload"
+    "payload": "payload",
+    "db:up": "docker compose -f compose.local.yml up -d postgres",
+    "db:down": "docker compose -f compose.local.yml stop postgres",
+    "db:logs": "docker compose -f compose.local.yml logs -f postgres"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.0.0",

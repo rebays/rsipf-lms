@@ -67,16 +67,14 @@ export const QuizClient = ({ quiz, courseSlug }: { quiz: Quiz; courseSlug: strin
         <span className={`badge ${result.passed ? 'badge--success' : 'badge--danger'}`}>
           {result.passed ? 'Passed' : 'Not passed'}
         </span>
-        <h2 className="t-h2 quiz-result__title">
-          You scored {result.score}%
-        </h2>
+        <h2 className="t-h2 mt-3">You scored {result.score}%</h2>
         {!result.passed && (
-          <p className="card__sub quiz-result__sub">
+          <p className="card__sub mt-3">
             Review the lesson and try again when you are ready. Each attempt counts
             toward your maximum.
           </p>
         )}
-        <div className="quiz-result__actions">
+        <div className="mt-5">
           <Link href={`/courses/${courseSlug}`} className="btn">
             Return to course
           </Link>
@@ -89,14 +87,12 @@ export const QuizClient = ({ quiz, courseSlug }: { quiz: Quiz; courseSlug: strin
     <div className="stack-5">
       <div className="card card--timer">
         <span className="t-eyebrow">Time remaining</span>
-        <span className="t-mono quiz-timer__time">
-          {formatTime(secondsLeft)}
-        </span>
+        <span className="t-mono quiz-timer__time">{formatTime(secondsLeft)}</span>
       </div>
 
       {quiz.questions.map((q, qi) => (
         <div key={qi} className="card">
-          <p className="t-h4 question-text">
+          <p className="t-h4 m-0 mb-3">
             {qi + 1}. {q.questionText}
           </p>
           <div className="stack-3">

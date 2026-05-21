@@ -51,7 +51,7 @@ export default async function AdminReportsPage() {
 
   return (
     <div className="shell">
-      <header className="page-header">
+      <header className="mb-8">
         <span className="eyebrow">Insights</span>
         <h1 className="t-h1 mt-3">Reports</h1>
       </header>
@@ -60,9 +60,7 @@ export default async function AdminReportsPage() {
         {stats.map((s) => (
           <div key={s.label} className="card card--accent">
             <p className="t-eyebrow">{s.label}</p>
-            <p className="t-display stat__value">
-              {s.value}
-            </p>
+            <p className="t-display text-4xl mt-2">{s.value}</p>
           </div>
         ))}
       </section>

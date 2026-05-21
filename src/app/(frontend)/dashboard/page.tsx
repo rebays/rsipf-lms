@@ -19,11 +19,9 @@ export default async function DashboardPage() {
 
     return (
       <div className="shell">
-        <header className="page-header">
+        <header className="mb-8">
           <span className="eyebrow">Officer dashboard</span>
-          <h1 className="t-h1 mt-3">
-            Welcome, {user.name}
-          </h1>
+          <h1 className="t-h1 mt-3">Welcome, {user.name}</h1>
           <p className="t-mono mt-2">
             {user.rank ? `${user.rank} · ` : ''}
             {user.unit || 'RSIPF'}
@@ -60,7 +58,7 @@ export default async function DashboardPage() {
                   <div className="progress-bar">
                     <div
                       className="progress-bar__fill"
-                      style={{ width: `${p.percentageComplete || 0}%` }}
+                      style={{ '--fill-width': `${p.percentageComplete || 0}%` } as React.CSSProperties}
                     />
                   </div>
                   {p.course?.slug && (
@@ -75,9 +73,7 @@ export default async function DashboardPage() {
         </section>
 
         <section className="mt-12">
-          <h2 className="t-h3 mb-4">
-            Available courses
-          </h2>
+          <h2 className="t-h3 mb-4">Available courses</h2>
           <div className="grid-3">
             {courses.docs.map((c: any) => (
               <div key={c.id} className="card card--accent">
@@ -116,7 +112,7 @@ export default async function DashboardPage() {
 
     return (
       <div className="shell">
-        <header className="page-header">
+        <header className="mb-8">
           <span className="eyebrow">Instructor dashboard</span>
           <h1 className="t-h1 mt-3">Your courses</h1>
         </header>
@@ -140,7 +136,7 @@ export default async function DashboardPage() {
                     {c.status}
                   </span>
                 </div>
-                <div className="app-card__meta app-card__meta--flush">
+                <div className="app-card__meta mt-0">
                   <span>{enrolled.length} enrolled</span>
                   <span>{completed} completed</span>
                 </div>
@@ -174,19 +170,15 @@ export default async function DashboardPage() {
 
   return (
     <div className="shell">
-      <header className="page-header">
+      <header className="mb-8">
         <span className="eyebrow">Administrator dashboard</span>
-        <h1 className="t-h1 mt-3">
-          System overview
-        </h1>
+        <h1 className="t-h1 mt-3">System overview</h1>
       </header>
       <div className="grid-4 stack-3">
         {stats.map((s) => (
           <div key={s.label} className="card card--accent">
             <p className="t-eyebrow">{s.label}</p>
-            <p className="t-display stat__value">
-              {s.value}
-            </p>
+            <p className="t-display text-4xl mt-2">{s.value}</p>
           </div>
         ))}
       </div>

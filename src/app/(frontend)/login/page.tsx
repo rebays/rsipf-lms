@@ -11,16 +11,16 @@ export default async function LoginPage() {
   return (
     <div className="auth-stage">
       <div className="auth-card">
-        <div className="auth-card__head auth-card__head--center">
+        <div className="auth-card__head text-center">
           <Image
             src="/rsipf-logo.png"
             alt="RSIPF crest"
             width={84}
             height={100}
             priority
-            className="auth-logo"
+            className="block mx-auto mb-4 h-25 w-auto"
           />
-          <span className="eyebrow eyebrow--center">Sign in</span>
+          <span className="eyebrow justify-center">Sign in</span>
           <h1 className="auth-card__title">RSIPF Learning Portal</h1>
           <p className="auth-card__sub">
             Use your training portal credentials. Contact your training officer if

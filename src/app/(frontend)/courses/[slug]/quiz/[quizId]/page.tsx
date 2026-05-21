@@ -31,14 +31,14 @@ export default async function QuizPage({
 
   return (
     <div className="shell">
-      <nav className="crumbs crumbs--mb">
+      <nav className="crumbs mb-4">
         <Link href={`/courses/${slug}`}>Back to course</Link>
       </nav>
 
       <header className="card card--accent mb-5">
         <span className="eyebrow">Knowledge check</span>
-        <h1 className="t-h2 card__heading">{quiz.title}</h1>
-        <p className="card__sub card__sub--mt">
+        <h1 className="t-h2 mt-2">{quiz.title}</h1>
+        <p className="card__sub mt-2">
           Pass mark {quiz.passMark}% · Attempts remaining: {Math.max(0, remaining)}
         </p>
       </header>

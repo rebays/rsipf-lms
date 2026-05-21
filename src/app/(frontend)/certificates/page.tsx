@@ -13,7 +13,7 @@ export default async function CertificatesPage() {
 
   return (
     <div className="shell">
-      <header className="page-header">
+      <header className="mb-8">
         <span className="eyebrow">Awarded</span>
         <h1 className="t-h1 mt-3">My certificates</h1>
       </header>
@@ -36,10 +36,8 @@ export default async function CertificatesPage() {
               <div className="card__head">
                 <div>
                   <p className="t-eyebrow">{c.certificateNumber}</p>
-                  <h2 className="card__title card__heading">
-                    {c.course?.title}
-                  </h2>
-                  <p className="card__sub card__sub--mt">
+                  <h2 className="card__title mt-2">{c.course?.title}</h2>
+                  <p className="card__sub mt-2">
                     Issued {new Date(c.issuedAt).toLocaleDateString()}
                   </p>
                 </div>

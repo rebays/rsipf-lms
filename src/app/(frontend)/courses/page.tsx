@@ -13,11 +13,9 @@ export default async function CoursesPage() {
 
   return (
     <div className="shell">
-      <header className="page-header">
+      <header className="mb-8">
         <span className="eyebrow">Catalogue</span>
-        <h1 className="t-h1 mt-3">
-          Course catalogue
-        </h1>
+        <h1 className="t-h1 mt-3">Course catalogue</h1>
         <p className="section__lede mt-3">
           Choose a course to begin training. Your progress is saved automatically.
         </p>
