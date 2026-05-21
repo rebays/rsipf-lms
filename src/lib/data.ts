@@ -2,7 +2,7 @@ export const DEMO_USER = {
   name: 'James Carlos',
   email: 'james.carlos@gmail.com',
   role: 'officer' as const,
-  rank: 'Senior Constable',
+  rank: 'Cadet',
   unit: 'Criminal Investigation Department',
 }
 
