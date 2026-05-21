@@ -27,6 +27,7 @@ export const NavBar = async () => {
         <div className="brandbar__nav">
           <Link href="/dashboard">Dashboard</Link>
           <Link href="/modules">Modules</Link>
+          <Link href="/progress">Progress</Link>
           <Link href="/reports">Reports</Link>
           <span className="brandbar__user hidden sm:inline">
             {user.name} · {user.rank}

@@ -58,3 +58,25 @@ export type Module = (typeof MODULES)[number]
 export function findModule(id: string): Module | undefined {
   return MODULES.find((m) => m.id === id)
 }
+
+export interface ModuleGrade {
+  score: string
+  grade: string
+  instructor: string
+  comments: string
+}
+
+export const MODULE_GRADES: Record<string, ModuleGrade> = {
+  '2': {
+    score: '82%',
+    grade: 'Competent',
+    instructor: 'Sgt. Paul Wale',
+    comments: 'Good understanding of administrative procedures. Paperwork is neat and accurate.',
+  },
+  '3': {
+    score: '75%',
+    grade: 'Competent',
+    instructor: 'Sgt. Grace Suri',
+    comments: 'Demonstrates awareness of community policing principles. Continue to develop communication skills.',
+  },
+}

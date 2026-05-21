@@ -1,29 +1,16 @@
-import { cookies } from 'next/headers'
 import { requireUser } from '@/lib/auth'
-import { MODULES } from '@/lib/data'
-
-const STATUS_LABEL: Record<string, string> = {
-  'ready-for-assessment': 'Ready for assessment',
-}
-
-const STATUS_BADGE: Record<string, string> = {
-  'ready-for-assessment': 'badge--success',
-}
+import { MODULES, MODULE_GRADES } from '@/lib/data'
 
 export default async function ReportsPage() {
   await requireUser()
-  const store = await cookies()
-
-  const getStatus = (id: string) =>
-    store.get(`module-${id}-status`)?.value ?? 'not-started'
 
   return (
     <div className="shell">
       <header className="mb-8">
-        <span className="eyebrow">My progress</span>
+        <span className="eyebrow">Assessment results</span>
         <h1 className="t-h1 mt-3">Reports</h1>
         <p className="section__lede mt-3">
-          Your score and status for each training module.
+          Scores, grades, and instructor feedback for each module.
         </p>
       </header>
 
@@ -34,21 +21,29 @@ export default async function ReportsPage() {
               <th className="w-12">#</th>
               <th>Module</th>
               <th className="text-center">Score</th>
-              <th className="text-center">Status</th>
+              <th className="text-center">Grade</th>
+              <th>Instructor</th>
+              <th>Comments</th>
             </tr>
           </thead>
           <tbody>
             {MODULES.map((m) => {
-              const status = getStatus(m.id)
+              const grade = MODULE_GRADES[m.id]
               return (
                 <tr key={m.id}>
                   <td className="mono num text-gray-400">{String(m.order).padStart(2, '0')}</td>
                   <td className="font-semibold text-navy-800">{m.title}</td>
-                  <td className="text-center mono num text-gray-400">—</td>
+                  <td className="text-center mono num">{grade?.score ?? '—'}</td>
                   <td className="text-center">
-                    <span className={`badge ${STATUS_BADGE[status] ?? 'badge--neutral'}`}>
-                      {STATUS_LABEL[status] ?? 'Not started'}
-                    </span>
+                    {grade ? (
+                      <span className="badge badge--success">{grade.grade}</span>
+                    ) : (
+                      <span className="badge badge--neutral">Pending</span>
+                    )}
+                  </td>
+                  <td>{grade?.instructor ?? '—'}</td>
+                  <td style={{ maxWidth: '280px', fontSize: '0.875rem', color: '#4b5563' }}>
+                    {grade?.comments ?? '—'}
                   </td>
                 </tr>
               )
