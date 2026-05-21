@@ -4,7 +4,7 @@ import { getCurrentUser } from '@/lib/auth'
 import { logout } from '@/app/actions/logout'
 
 export const NavBar = async () => {
-  const { user } = await getCurrentUser()
+  const user = await getCurrentUser().then((r) => r.user).catch(() => null)
 
   return (
     <header className="brandbar">

@@ -4,8 +4,9 @@ import { getCurrentUser } from '@/lib/auth'
 import { LoginForm } from './LoginForm'
 
 export default async function LoginPage() {
-  const { user } = await getCurrentUser()
-  if (user) redirect('/dashboard')
+  const result = await getCurrentUser()
+  if (result.dbUnavailable) redirect('/service-unavailable')
+  if (result.user) redirect('/dashboard')
 
   return (
     <div className="auth-stage">
