@@ -13,13 +13,10 @@ export default async function AdminCoursesPage() {
 
   return (
     <div className="shell">
-      <header
-        className="stage-nav"
-        style={{ marginTop: 0, paddingTop: 0, borderTop: 0, marginBottom: 'var(--sp-6)' }}
-      >
+      <header className="stage-nav stage-nav--header">
         <div className="stage-nav__left">
           <span className="eyebrow">Management</span>
-          <h1 className="t-h1" style={{ margin: 0 }}>Manage courses</h1>
+          <h1 className="t-h1 m-0">Manage courses</h1>
         </div>
         <div className="stage-nav__right">
           <a href="/admin/collections/courses/create" className="btn">
@@ -36,13 +33,13 @@ export default async function AdminCoursesPage() {
               <th>Status</th>
               <th>Category</th>
               <th>Duration</th>
-              <th style={{ width: 160 }}>Actions</th>
+              <th className="th-actions">Actions</th>
             </tr>
           </thead>
           <tbody>
             {courses.docs.map((c: any) => (
               <tr key={c.id}>
-                <td style={{ fontWeight: 600, color: 'var(--navy-800)' }}>{c.title}</td>
+                <td className="td-name">{c.title}</td>
                 <td>
                   <span
                     className={`badge ${

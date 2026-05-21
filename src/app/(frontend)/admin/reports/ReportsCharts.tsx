@@ -28,10 +28,10 @@ export const ReportsCharts = ({
     <div className="grid-2 stack-3">
       <div className="card">
         <p className="t-eyebrow">By unit</p>
-        <h2 className="t-h3" style={{ marginTop: 'var(--sp-2)', marginBottom: 'var(--sp-3)' }}>
+        <h2 className="t-h3 chart__title">
           Completion rate
         </h2>
-        <div style={{ height: 288 }}>
+        <div className="chart-wrap">
           <ResponsiveContainer>
             <BarChart data={byUnit}>
               <CartesianGrid strokeDasharray="3 3" stroke="#dde1ea" />
@@ -51,10 +51,10 @@ export const ReportsCharts = ({
 
       <div className="card">
         <p className="t-eyebrow">By quiz</p>
-        <h2 className="t-h3" style={{ marginTop: 'var(--sp-2)', marginBottom: 'var(--sp-3)' }}>
+        <h2 className="t-h3 chart__title">
           Pass rate
         </h2>
-        <div style={{ height: 288 }}>
+        <div className="chart-wrap">
           <ResponsiveContainer>
             <BarChart data={byCourse}>
               <CartesianGrid strokeDasharray="3 3" stroke="#dde1ea" />

@@ -31,14 +31,14 @@ export default async function QuizPage({
 
   return (
     <div className="shell">
-      <nav className="crumbs" style={{ marginBottom: 'var(--sp-4)' }}>
+      <nav className="crumbs crumbs--mb">
         <Link href={`/courses/${slug}`}>Back to course</Link>
       </nav>
 
-      <header className="card card--accent" style={{ marginBottom: 'var(--sp-5)' }}>
+      <header className="card card--accent mb-5">
         <span className="eyebrow">Knowledge check</span>
-        <h1 className="t-h2" style={{ marginTop: 'var(--sp-2)' }}>{quiz.title}</h1>
-        <p className="card__sub" style={{ marginTop: 'var(--sp-2)' }}>
+        <h1 className="t-h2 card__heading">{quiz.title}</h1>
+        <p className="card__sub card__sub--mt">
           Pass mark {quiz.passMark}% · Attempts remaining: {Math.max(0, remaining)}
         </p>
       </header>

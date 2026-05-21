@@ -38,10 +38,10 @@ export const LessonClient = ({
   }
 
   return (
-    <div className="card" style={{ background: 'var(--navy-50)', borderColor: 'var(--navy-100)' }}>
-      <div className="stage-nav" style={{ borderTop: 0, paddingTop: 0, marginTop: 0 }}>
+    <div className="card card--tinted">
+      <div className="stage-nav stage-nav--flush">
         <div className="stage-nav__left">
-          <p className="t-base" style={{ margin: 0, color: 'var(--gray-800)' }}>
+          <p className="t-base stage-nav__msg">
             Finished this lesson? Mark it complete to update your progress.
           </p>
         </div>
@@ -56,7 +56,7 @@ export const LessonClient = ({
         </div>
       </div>
       {message && (
-        <p className="t-mono" style={{ marginTop: 'var(--sp-3)' }}>
+        <p className="t-mono lesson-msg">
           {message}
         </p>
       )}

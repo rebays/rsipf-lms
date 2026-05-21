@@ -9,13 +9,10 @@ export default async function AdminUsersPage() {
 
   return (
     <div className="shell">
-      <header
-        className="stage-nav"
-        style={{ marginTop: 0, paddingTop: 0, borderTop: 0, marginBottom: 'var(--sp-6)' }}
-      >
+      <header className="stage-nav stage-nav--header">
         <div className="stage-nav__left">
           <span className="eyebrow">Management</span>
-          <h1 className="t-h1" style={{ margin: 0 }}>Manage users</h1>
+          <h1 className="t-h1 m-0">Manage users</h1>
         </div>
         <div className="stage-nav__right">
           <a href="/admin/collections/users/create" className="btn">New user</a>
@@ -40,7 +37,7 @@ export default async function AdminUsersPage() {
                 <td>
                   <a
                     href={`/admin/collections/users/${u.id}`}
-                    style={{ fontWeight: 600, color: 'var(--navy-800)' }}
+                    className="td-name"
                   >
                     {u.name}
                   </a>

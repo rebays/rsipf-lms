@@ -13,12 +13,12 @@ export default async function CoursesPage() {
 
   return (
     <div className="shell">
-      <header style={{ marginBottom: 'var(--sp-8)' }}>
+      <header className="page-header">
         <span className="eyebrow">Catalogue</span>
-        <h1 className="t-h1" style={{ marginTop: 'var(--sp-3)' }}>
+        <h1 className="t-h1 mt-3">
           Course catalogue
         </h1>
-        <p className="section__lede" style={{ marginTop: 'var(--sp-3)' }}>
+        <p className="section__lede mt-3">
           Choose a course to begin training. Your progress is saved automatically.
         </p>
       </header>
@@ -41,7 +41,7 @@ export default async function CoursesPage() {
                 </div>
                 <span className="badge badge--solid">{c.duration || '—'} min</span>
               </div>
-              <div style={{ marginTop: 'var(--sp-4)' }}>
+              <div className="mt-4">
                 <Link href={`/courses/${c.slug}`} className="btn btn--sm">
                   View course
                 </Link>

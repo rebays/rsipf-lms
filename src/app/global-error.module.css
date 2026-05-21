@@ -1,0 +1,23 @@
+.body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 4rem 1rem;
+}
+.title {
+  color: #0a1f3a;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.text {
+  color: #666;
+  margin-bottom: 2rem;
+}
+.btn {
+  background: #8c7232;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}

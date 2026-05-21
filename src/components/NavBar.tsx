@@ -16,10 +16,9 @@ export const NavBar = async () => {
           height={52}
           priority
           className="brandbar__shield"
-          style={{ width: 'auto', height: 52 }}
         />
         <span>
-          <span className="brandbar__name" style={{ display: 'block' }}>
+          <span className="brandbar__name">
             Learning Portal
           </span>
           <span className="brandbar__sub">Royal Solomon Islands Police Force</span>

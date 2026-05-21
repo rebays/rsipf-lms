@@ -13,9 +13,9 @@ export default async function CertificatesPage() {
 
   return (
     <div className="shell">
-      <header style={{ marginBottom: 'var(--sp-8)' }}>
+      <header className="page-header">
         <span className="eyebrow">Awarded</span>
-        <h1 className="t-h1" style={{ marginTop: 'var(--sp-3)' }}>My certificates</h1>
+        <h1 className="t-h1 mt-3">My certificates</h1>
       </header>
 
       {certs.docs.length === 0 ? (
@@ -36,16 +36,16 @@ export default async function CertificatesPage() {
               <div className="card__head">
                 <div>
                   <p className="t-eyebrow">{c.certificateNumber}</p>
-                  <h2 className="card__title" style={{ marginTop: 'var(--sp-2)' }}>
+                  <h2 className="card__title card__heading">
                     {c.course?.title}
                   </h2>
-                  <p className="card__sub" style={{ marginTop: 'var(--sp-2)' }}>
+                  <p className="card__sub card__sub--mt">
                     Issued {new Date(c.issuedAt).toLocaleDateString()}
                   </p>
                 </div>
                 <span className="badge badge--gold">Awarded</span>
               </div>
-              <div style={{ marginTop: 'var(--sp-4)' }}>
+              <div className="mt-4">
                 <a
                   href={`/api/certificates/${c.id}/pdf`}
                   target="_blank"

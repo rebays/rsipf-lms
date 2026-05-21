@@ -196,9 +196,9 @@
   .brandbar a { color: inherit; text-decoration: none; }
   .brandbar a:hover { text-decoration: none; }
   .brandbar__id { display: flex; align-items: center; gap: var(--sp-3); color: var(--white); }
-  .brandbar__shield { width: 36px; height: 40px; }
+  .brandbar__shield { width: auto; height: 52px; }
   .brandbar__name {
-    font-weight: 700; letter-spacing: var(--tracking-eyebrow);
+    display: block; font-weight: 700; letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase; font-size: 13px;
   }
   .brandbar__sub {
@@ -904,4 +904,87 @@
   }
   .page-head__lede { color: var(--gray-700); font-size: var(--fs-lg); margin: 0; max-width: 60ch; }
   .page-body { max-width: 960px; margin: 0 auto; padding: 0 var(--sp-4) var(--sp-20); }
+
+  /* ─── Spacing utilities ─── */
+  .m-0   { margin: 0; }
+  .mt-2  { margin-top: var(--sp-2); }
+  .mt-3  { margin-top: var(--sp-3); }
+  .mt-4  { margin-top: var(--sp-4); }
+  .mt-5  { margin-top: var(--sp-5); }
+  .mt-8  { margin-top: var(--sp-8); }
+  .mt-12 { margin-top: var(--sp-12); }
+  .mb-4  { margin-bottom: var(--sp-4); }
+  .mb-5  { margin-bottom: var(--sp-5); }
+  .mb-6  { margin-bottom: var(--sp-6); }
+  .mb-8  { margin-bottom: var(--sp-8); }
+
+  /* ─── Auth additions ─── */
+  .auth-logo { display: block; margin: 0 auto var(--sp-4); height: 100px; width: auto; }
+  .auth-card__head--center { text-align: center; }
+  .eyebrow--center { justify-content: center; }
+
+  /* ─── Button additions ─── */
+  .btn--full { display: flex; width: 100%; }
+
+  /* ─── Page header ─── */
+  .page-header { margin-bottom: var(--sp-8); }
+
+  /* ─── Stage nav variants ─── */
+  .stage-nav--header { margin-top: 0; padding-top: 0; border-top: 0; margin-bottom: var(--sp-6); }
+  .stage-nav--flush  { margin-top: 0; padding-top: 0; border-top: 0; }
+  .stage-nav__msg    { margin: 0; color: var(--gray-800); }
+
+  /* ─── Table additions ─── */
+  .td-name    { font-weight: 600; color: var(--navy-800); }
+  .th-actions { width: 160px; }
+
+  /* ─── Card variants ─── */
+  .card--tinted { background: var(--navy-50); border-color: var(--navy-100); }
+  .card--passed { border-top-color: var(--success-600); }
+  .card--failed { border-top-color: var(--danger-600); }
+  .card--timer  {
+    background: var(--gold-50); border-color: var(--gold-100);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: var(--sp-4) var(--sp-5);
+  }
+  .card__heading { margin-top: var(--sp-2); }
+  .card__sub--mt { margin-top: var(--sp-2); }
+
+  /* ─── Stat display ─── */
+  .stat__value { font-size: 36px; margin: var(--sp-2) 0 0; }
+
+  /* ─── Chart ─── */
+  .chart__title { margin-top: var(--sp-2); margin-bottom: var(--sp-3); }
+  .chart-wrap   { height: 288px; }
+
+  /* ─── Breadcrumb variant ─── */
+  .crumbs--mb { margin-bottom: var(--sp-4); }
+
+  /* ─── App card addition ─── */
+  .app-card__meta--flush { margin-top: 0; }
+
+  /* ─── Module description ─── */
+  .module-desc { opacity: 0.8; margin-top: var(--sp-2); font-size: var(--fs-sm); }
+
+  /* ─── Video embed ─── */
+  .video-wrap        { aspect-ratio: 16 / 9; }
+  .video-wrap iframe { width: 100%; height: 100%; border: 0; border-radius: var(--r-sm); }
+
+  /* ─── Lesson ─── */
+  .lesson-content {
+    font-family: var(--font-sans); font-size: var(--fs-base);
+    line-height: var(--lh-loose); color: var(--gray-800);
+    white-space: pre-wrap; margin: 0;
+  }
+  .lesson-msg { margin-top: var(--sp-3); }
+
+  /* ─── Quiz ─── */
+  .quiz-timer__time     { font-weight: 700; font-size: var(--fs-h4); color: var(--navy-800); }
+  .quiz-result__title   { margin-top: var(--sp-3); }
+  .quiz-result__sub     { margin-top: var(--sp-3); }
+  .quiz-result__actions { margin-top: var(--sp-5); }
+  .question-text        { margin: 0 0 var(--sp-3); }
+
+  /* ─── Section title ─── */
+  .section__title { margin-top: var(--sp-2); margin-bottom: var(--sp-4); }
 }

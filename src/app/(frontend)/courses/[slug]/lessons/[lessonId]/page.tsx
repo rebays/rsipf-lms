@@ -41,7 +41,7 @@ export default async function LessonPage({
 
   return (
     <div className="shell">
-      <nav className="crumbs" style={{ marginBottom: 'var(--sp-4)' }}>
+      <nav className="crumbs crumbs--mb">
         <Link href="/courses">Courses</Link>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polyline points="9 18 15 12 9 6" />
@@ -53,36 +53,26 @@ export default async function LessonPage({
         <span className="current">{lesson.title}</span>
       </nav>
 
-      <header className="card card--accent" style={{ marginBottom: 'var(--sp-5)' }}>
+      <header className="card card--accent mb-5">
         <span className="eyebrow">Lesson</span>
-        <h1 className="t-h2" style={{ marginTop: 'var(--sp-2)' }}>{lesson.title}</h1>
-        <p className="card__sub" style={{ marginTop: 'var(--sp-2)' }}>
+        <h1 className="t-h2 card__heading">{lesson.title}</h1>
+        <p className="card__sub card__sub--mt">
           {lesson.type} · {lesson.duration || '—'} min
         </p>
       </header>
 
-      <section className="card" style={{ marginBottom: 'var(--sp-5)' }}>
+      <section className="card mb-5">
         {lesson.type === 'video' && lesson.videoUrl && (
-          <div style={{ aspectRatio: '16 / 9' }}>
+          <div className="video-wrap">
             <iframe
               src={lesson.videoUrl}
-              style={{ width: '100%', height: '100%', border: 0, borderRadius: 'var(--r-sm)' }}
               allow="autoplay; encrypted-media"
               allowFullScreen
             />
           </div>
         )}
         {lesson.type === 'text' && lesson.content && (
-          <pre
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'var(--fs-base)',
-              lineHeight: 'var(--lh-loose)',
-              color: 'var(--gray-800)',
-              whiteSpace: 'pre-wrap',
-              margin: 0,
-            }}
-          >
+          <pre className="lesson-content">
             {(() => {
               const root = (lesson.content as any)?.root
               const paragraphs: string[] = []
@@ -135,9 +125,9 @@ export default async function LessonPage({
       />
 
       {quizzes.docs.length > 0 && (
-        <section className="card" style={{ marginTop: 'var(--sp-5)' }}>
+        <section className="card mt-5">
           <span className="eyebrow">Check your understanding</span>
-          <h2 className="t-h3" style={{ marginTop: 'var(--sp-2)', marginBottom: 'var(--sp-4)' }}>
+          <h2 className="t-h3 section__title">
             Knowledge checks
           </h2>
           <div className="stack-3">

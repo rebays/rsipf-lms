@@ -19,19 +19,19 @@ export default async function DashboardPage() {
 
     return (
       <div className="shell">
-        <header style={{ marginBottom: 'var(--sp-8)' }}>
+        <header className="page-header">
           <span className="eyebrow">Officer dashboard</span>
-          <h1 className="t-h1" style={{ marginTop: 'var(--sp-3)' }}>
+          <h1 className="t-h1 mt-3">
             Welcome, {user.name}
           </h1>
-          <p className="t-mono" style={{ marginTop: 'var(--sp-2)' }}>
+          <p className="t-mono mt-2">
             {user.rank ? `${user.rank} · ` : ''}
             {user.unit || 'RSIPF'}
           </p>
         </header>
 
         <section>
-          <h2 className="t-h3" style={{ marginBottom: 'var(--sp-4)' }}>Your training</h2>
+          <h2 className="t-h3 mb-4">Your training</h2>
           {progressList.docs.length === 0 ? (
             <div className="empty">
               <svg className="empty__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -74,8 +74,8 @@ export default async function DashboardPage() {
           )}
         </section>
 
-        <section style={{ marginTop: 'var(--sp-12)' }}>
-          <h2 className="t-h3" style={{ marginBottom: 'var(--sp-4)' }}>
+        <section className="mt-12">
+          <h2 className="t-h3 mb-4">
             Available courses
           </h2>
           <div className="grid-3">
@@ -86,7 +86,7 @@ export default async function DashboardPage() {
                   {c.category || 'General'}
                   {c.duration ? ` · ${c.duration} min` : ''}
                 </p>
-                <div style={{ marginTop: 'var(--sp-4)' }}>
+                <div className="mt-4">
                   <Link href={`/courses/${c.slug}`} className="btn btn--sm">
                     View course
                   </Link>
@@ -116,9 +116,9 @@ export default async function DashboardPage() {
 
     return (
       <div className="shell">
-        <header style={{ marginBottom: 'var(--sp-8)' }}>
+        <header className="page-header">
           <span className="eyebrow">Instructor dashboard</span>
-          <h1 className="t-h1" style={{ marginTop: 'var(--sp-3)' }}>Your courses</h1>
+          <h1 className="t-h1 mt-3">Your courses</h1>
         </header>
         <div className="grid-2 stack-3">
           {courses.docs.map((c: any) => {
@@ -140,11 +140,11 @@ export default async function DashboardPage() {
                     {c.status}
                   </span>
                 </div>
-                <div className="app-card__meta" style={{ marginTop: 0 }}>
+                <div className="app-card__meta app-card__meta--flush">
                   <span>{enrolled.length} enrolled</span>
                   <span>{completed} completed</span>
                 </div>
-                <div style={{ marginTop: 'var(--sp-4)' }}>
+                <div className="mt-4">
                   <Link href="/admin/courses" className="btn btn--secondary btn--sm">
                     Manage
                   </Link>
@@ -174,9 +174,9 @@ export default async function DashboardPage() {
 
   return (
     <div className="shell">
-      <header style={{ marginBottom: 'var(--sp-8)' }}>
+      <header className="page-header">
         <span className="eyebrow">Administrator dashboard</span>
-        <h1 className="t-h1" style={{ marginTop: 'var(--sp-3)' }}>
+        <h1 className="t-h1 mt-3">
           System overview
         </h1>
       </header>
@@ -184,13 +184,13 @@ export default async function DashboardPage() {
         {stats.map((s) => (
           <div key={s.label} className="card card--accent">
             <p className="t-eyebrow">{s.label}</p>
-            <p className="t-display" style={{ fontSize: 36, margin: 'var(--sp-2) 0 0' }}>
+            <p className="t-display stat__value">
               {s.value}
             </p>
           </div>
         ))}
       </div>
-      <div style={{ marginTop: 'var(--sp-8)' }}>
+      <div className="mt-8">
         <Link href="/admin/reports" className="btn">
           View detailed reports
         </Link>

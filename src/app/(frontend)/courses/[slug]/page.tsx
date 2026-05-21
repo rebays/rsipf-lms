@@ -56,7 +56,7 @@ export default async function CourseDetailPage({
 
   return (
     <div className="shell">
-      <nav className="crumbs" style={{ marginBottom: 'var(--sp-4)' }}>
+      <nav className="crumbs crumbs--mb">
         <Link href="/courses">Courses</Link>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polyline points="9 18 15 12 9 6" />
@@ -64,18 +64,18 @@ export default async function CourseDetailPage({
         <span className="current">{course.title}</span>
       </nav>
 
-      <header className="card card--accent" style={{ marginBottom: 'var(--sp-6)' }}>
+      <header className="card card--accent mb-6">
         <span className="eyebrow">{course.category || 'Training'}</span>
-        <h1 className="t-h2" style={{ marginTop: 'var(--sp-2)' }}>
+        <h1 className="t-h2 card__heading">
           {course.title}
         </h1>
-        <p className="card__sub" style={{ marginTop: 'var(--sp-2)' }}>
+        <p className="card__sub card__sub--mt">
           {course.duration || '—'} minutes · {modules.docs.length} module
           {modules.docs.length === 1 ? '' : 's'} · {lessons.docs.length} lesson
           {lessons.docs.length === 1 ? '' : 's'}
         </p>
         {progress && (
-          <div style={{ marginTop: 'var(--sp-5)' }}>
+          <div className="mt-5">
             <div className="progress-bar">
               <div className="progress-bar__fill" style={{ width: `${pct}%` }} />
             </div>
@@ -98,13 +98,7 @@ export default async function CourseDetailPage({
                     Module {m.order}: {m.title}
                   </h4>
                   {m.description && (
-                    <p
-                      style={{
-                        opacity: 0.8,
-                        marginTop: 'var(--sp-2)',
-                        fontSize: 'var(--fs-sm)',
-                      }}
-                    >
+                    <p className="module-desc">
                       {m.description}
                     </p>
                   )}

@@ -51,16 +51,16 @@ export default async function AdminReportsPage() {
 
   return (
     <div className="shell">
-      <header style={{ marginBottom: 'var(--sp-8)' }}>
+      <header className="page-header">
         <span className="eyebrow">Insights</span>
-        <h1 className="t-h1" style={{ marginTop: 'var(--sp-3)' }}>Reports</h1>
+        <h1 className="t-h1 mt-3">Reports</h1>
       </header>
 
-      <section className="grid-3 stack-3" style={{ marginBottom: 'var(--sp-8)' }}>
+      <section className="grid-3 stack-3 mb-8">
         {stats.map((s) => (
           <div key={s.label} className="card card--accent">
             <p className="t-eyebrow">{s.label}</p>
-            <p className="t-display" style={{ fontSize: 36, margin: 'var(--sp-2) 0 0' }}>
+            <p className="t-display stat__value">
               {s.value}
             </p>
           </div>
