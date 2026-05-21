@@ -70,13 +70,13 @@ export const MODULE_GRADES: Record<string, ModuleGrade> = {
   '2': {
     score: '82%',
     grade: 'Competent',
-    instructor: 'Sgt. Paul Wale',
+    instructor: 'Sgt. John',
     comments: 'Good understanding of administrative procedures. Paperwork is neat and accurate.',
   },
   '3': {
     score: '75%',
     grade: 'Competent',
-    instructor: 'Sgt. Grace Suri',
+    instructor: 'Sgt. Zack',
     comments: 'Demonstrates awareness of community policing principles. Continue to develop communication skills.',
   },
 }
