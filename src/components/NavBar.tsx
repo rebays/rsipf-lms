@@ -19,7 +19,7 @@ export const NavBar = async () => {
         />
         <span>
           <span className="brandbar__name">
-            Learning Portal
+            Academy
           </span>
           <span className="brandbar__sub">Royal Solomon Islands Police Force</span>
         </span>

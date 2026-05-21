@@ -21,7 +21,7 @@ export default async function LoginPage() {
             className="block mx-auto mb-4 h-25 w-auto"
           />
           <span className="eyebrow justify-center">Sign in</span>
-          <h1 className="auth-card__title">RSIPF Learning Portal</h1>
+          <h1 className="auth-card__title">RSIPF Academy</h1>
           <p className="auth-card__sub">
             Use your training portal credentials. Contact your training officer if
             you can&apos;t sign in.

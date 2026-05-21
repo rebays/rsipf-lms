@@ -1,5 +1,5 @@
 /**
- * Seed script for the RSIPF Learning Portal.
+ * Seed script for the RSIPF Academy.
  *
  * Run with: npm run seed
  *

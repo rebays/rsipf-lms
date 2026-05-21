@@ -26,7 +26,7 @@ export const sendCourseAssignedEmail = async (args: {
     subject: `New training assigned: ${args.courseTitle}`,
     html: `
       <p>Hello ${args.officerName},</p>
-      <p>A new course is now available for you on the RSIPF Learning Portal:</p>
+      <p>A new course is now available for you on the RSIPF Academy:</p>
       <p><strong>${args.courseTitle}</strong></p>
       <p><a href="${url}">Open course</a></p>
       <p>Thank you for your continued service.</p>

@@ -24,7 +24,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: '— RSIPF Learning Portal',
+      titleSuffix: '— RSIPF Academy',
     },
   },
   collections: [

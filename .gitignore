@@ -8,3 +8,5 @@ build
 .DS_Store
 media/
 .hintrc
+payload
+rsipf-lms@0.1.0

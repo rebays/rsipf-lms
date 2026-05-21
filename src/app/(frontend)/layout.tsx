@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'RSIPF Learning Portal',
+  title: 'RSIPF Academy',
   description: 'Training portal for the Royal Solomon Islands Police Force',
 }
 
