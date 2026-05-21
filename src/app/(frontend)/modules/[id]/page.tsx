@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { cookies } from 'next/headers'
 import { requireUser } from '@/lib/auth'
 import { findModule } from '@/lib/data'
 import { PDFViewer } from '@/components/PDFViewer'
+import { SelfCheck } from '@/components/SelfCheck'
 
 export default async function ModuleDetailPage({
   params,
@@ -14,6 +16,9 @@ export default async function ModuleDetailPage({
 
   const module = findModule(id)
   if (!module) notFound()
+
+  const store = await cookies()
+  const completed = store.get(`module-${id}-status`)?.value === 'ready-for-assessment'
 
   return (
     <div className="shell">
@@ -28,7 +33,7 @@ export default async function ModuleDetailPage({
         <h1 className="t-h1 mt-3">{module.title}</h1>
       </header>
 
-      <section>
+      <section className="mb-8">
         <h2 className="t-h3 mb-4">Resources</h2>
 
         {module.documents.length === 0 ? (
@@ -46,6 +51,13 @@ export default async function ModuleDetailPage({
           </div>
         )}
       </section>
+
+      {id === '1' && (
+        <section>
+          <h2 className="t-h3 mb-4">Self-Check</h2>
+          <SelfCheck moduleId={id} completed={completed} />
+        </section>
+      )}
     </div>
   )
 }
