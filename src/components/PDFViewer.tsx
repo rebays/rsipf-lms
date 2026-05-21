@@ -14,7 +14,11 @@ export const PDFViewer = ({ title, url }: Props) => {
     <>
       <div className="card card--row">
         <div className="card__icon">
-          <span style={{ fontSize: '1.75rem' }}>📄</span>
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" fill="#e63946" stroke="#c1121f" strokeWidth="0.5"/>
+            <path d="M14 2v6h6" fill="none" stroke="#c1121f" strokeWidth="1"/>
+            <text x="4.5" y="19" fontFamily="sans-serif" fontWeight="700" fontSize="5.5" fill="#fff" letterSpacing="0.3">PDF</text>
+          </svg>
         </div>
         <div className="card__body">
           <h3 className="card__title">{title}</h3>
