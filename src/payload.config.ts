@@ -54,7 +54,7 @@ export default buildConfig({
       ;(adapter as any).initializing?.catch(() => {})
       return adapter
     }
-  })() as ReturnType<typeof postgresAdapter>,
+  })() as unknown as ReturnType<typeof postgresAdapter>,
   plugins: [
     s3Storage({
       collections: {
