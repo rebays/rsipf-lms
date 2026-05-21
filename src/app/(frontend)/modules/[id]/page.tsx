@@ -2,20 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { requireUser } from '@/lib/auth'
 import { findModule } from '@/lib/data'
-
-const FILE_ICONS: Record<string, string> = {
-  pdf:        '📄',
-  word:       '📝',
-  excel:      '📊',
-  powerpoint: '📋',
-}
-
-const FILE_LABELS: Record<string, string> = {
-  pdf:        'PDF',
-  word:       'Word Document',
-  excel:      'Excel Spreadsheet',
-  powerpoint: 'PowerPoint',
-}
+import { PDFViewer } from '@/components/PDFViewer'
 
 export default async function ModuleDetailPage({
   params,
@@ -39,9 +26,6 @@ export default async function ModuleDetailPage({
       <header className="mb-8">
         <span className="eyebrow">Module {module.order}</span>
         <h1 className="t-h1 mt-3">{module.title}</h1>
-        {module.description && (
-          <p className="section__lede mt-3">{module.description}</p>
-        )}
       </header>
 
       <section>
@@ -57,27 +41,7 @@ export default async function ModuleDetailPage({
         ) : (
           <div className="stack-3">
             {module.documents.map((doc) => (
-              <div key={doc.id} className="card card--row">
-                <div className="card__icon">
-                  <span style={{ fontSize: '1.75rem' }}>
-                    {FILE_ICONS[doc.fileType] ?? '📄'}
-                  </span>
-                </div>
-                <div className="card__body">
-                  <h3 className="card__title">{doc.title}</h3>
-                  {doc.description && (
-                    <p className="card__sub mt-1">{doc.description}</p>
-                  )}
-                  <span className="badge badge--neutral mt-2">
-                    {FILE_LABELS[doc.fileType] ?? 'Document'}
-                  </span>
-                </div>
-                <div className="card__action">
-                  <button className="btn btn--sm btn--ghost" disabled>
-                    Coming soon
-                  </button>
-                </div>
-              </div>
+              <PDFViewer key={doc.id} title={doc.title} url={doc.url} />
             ))}
           </div>
         )}

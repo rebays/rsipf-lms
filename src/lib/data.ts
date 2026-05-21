@@ -9,7 +9,19 @@ export const DEMO_USER = {
 export type DemoUser = typeof DEMO_USER
 
 export const MODULES = [
-  { id: '1',  order: 1,  title: 'Being a Professional Police Officer',           documents: [] },
+  {
+    id: '1',
+    order: 1,
+    title: 'Being a Professional Police Officer',
+    documents: [
+      {
+        id: 'd1',
+        title: 'Being a Professional Police Officer',
+        fileType: 'pdf',
+        url: '/modules/being-a-police-officer/Being%20a%20Professional%20Police%20Officer.pdf',
+      },
+    ],
+  },
   { id: '2',  order: 2,  title: 'Police Administrative Duties',                  documents: [] },
   { id: '3',  order: 3,  title: 'Community and Police Working Together',          documents: [] },
   { id: '4',  order: 4,  title: 'Useful Communication at Work',                  documents: [] },
