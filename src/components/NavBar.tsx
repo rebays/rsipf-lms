@@ -4,7 +4,7 @@ import { getCurrentUser } from '@/lib/auth'
 import { logout } from '@/app/actions/logout'
 
 export const NavBar = async () => {
-  const user = await getCurrentUser().then((r) => r.user).catch(() => null)
+  const user = await getCurrentUser()
 
   return (
     <header className="brandbar">
@@ -18,9 +18,7 @@ export const NavBar = async () => {
           className="brandbar__shield"
         />
         <span>
-          <span className="brandbar__name">
-            Academy
-          </span>
+          <span className="brandbar__name">Academy</span>
           <span className="brandbar__sub">Royal Solomon Islands Police Force</span>
         </span>
       </Link>
@@ -28,18 +26,10 @@ export const NavBar = async () => {
       {user && (
         <div className="brandbar__nav">
           <Link href="/dashboard">Dashboard</Link>
+          <Link href="/modules">Modules</Link>
           <Link href="/reports">Reports</Link>
-          {(user.role === 'admin' || user.role === 'instructor') && (
-            <Link href="/admin/modules">Manage</Link>
-          )}
-          {user.role === 'admin' && (
-            <>
-              <Link href="/admin/users">Users</Link>
-              <Link href="/admin/reports">Reports</Link>
-            </>
-          )}
           <span className="brandbar__user hidden sm:inline">
-            {user.name} · {user.role}
+            {user.name} · {user.rank}
           </span>
           <form action={logout}>
             <button type="submit" className="btn btn--sm btn--gold">

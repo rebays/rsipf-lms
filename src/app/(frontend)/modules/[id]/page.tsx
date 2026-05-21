@@ -1,19 +1,20 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { requireUser } from '@/lib/auth'
+import { findModule } from '@/lib/data'
 
 const FILE_ICONS: Record<string, string> = {
-  pdf:         '📄',
-  word:        '📝',
-  excel:       '📊',
-  powerpoint:  '📋',
+  pdf:        '📄',
+  word:       '📝',
+  excel:      '📊',
+  powerpoint: '📋',
 }
 
 const FILE_LABELS: Record<string, string> = {
-  pdf:         'PDF',
-  word:        'Word Document',
-  excel:       'Excel Spreadsheet',
-  powerpoint:  'PowerPoint',
+  pdf:        'PDF',
+  word:       'Word Document',
+  excel:      'Excel Spreadsheet',
+  powerpoint: 'PowerPoint',
 }
 
 export default async function ModuleDetailPage({
@@ -22,18 +23,10 @@ export default async function ModuleDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const { payload } = await requireUser()
+  await requireUser()
 
-  let module: any
-  try {
-    module = await payload.findByID({ collection: 'modules', id })
-  } catch {
-    notFound()
-  }
-
-  if (!module || module.status !== 'published') notFound()
-
-  const documents: any[] = module.documents ?? []
+  const module = findModule(id)
+  if (!module) notFound()
 
   return (
     <div className="shell">
@@ -54,7 +47,7 @@ export default async function ModuleDetailPage({
       <section>
         <h2 className="t-h3 mb-4">Resources</h2>
 
-        {documents.length === 0 ? (
+        {module.documents.length === 0 ? (
           <div className="empty">
             <p className="empty__title">No resources yet</p>
             <p className="empty__body">
@@ -63,8 +56,8 @@ export default async function ModuleDetailPage({
           </div>
         ) : (
           <div className="stack-3">
-            {documents.map((doc: any, i: number) => (
-              <div key={doc.id ?? i} className="card card--row">
+            {module.documents.map((doc) => (
+              <div key={doc.id} className="card card--row">
                 <div className="card__icon">
                   <span style={{ fontSize: '1.75rem' }}>
                     {FILE_ICONS[doc.fileType] ?? '📄'}
@@ -80,20 +73,9 @@ export default async function ModuleDetailPage({
                   </span>
                 </div>
                 <div className="card__action">
-                  {doc.file?.url ? (
-                    <a
-                      href={doc.file.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn btn--sm"
-                    >
-                      Download
-                    </a>
-                  ) : (
-                    <button className="btn btn--sm btn--ghost" disabled>
-                      Coming soon
-                    </button>
-                  )}
+                  <button className="btn btn--sm btn--ghost" disabled>
+                    Coming soon
+                  </button>
                 </div>
               </div>
             ))}

@@ -1,14 +1,8 @@
 import { requireUser } from '@/lib/auth'
+import { MODULES } from '@/lib/data'
 
 export default async function ReportsPage() {
-  const { payload } = await requireUser()
-
-  const modules = await payload.find({
-    collection: 'modules',
-    where: { status: { equals: 'published' } },
-    sort: 'order',
-    limit: 100,
-  })
+  await requireUser()
 
   return (
     <div className="shell">
@@ -31,7 +25,7 @@ export default async function ReportsPage() {
             </tr>
           </thead>
           <tbody>
-            {modules.docs.map((m: any) => (
+            {MODULES.map((m) => (
               <tr key={m.id}>
                 <td className="mono num text-gray-400">{String(m.order).padStart(2, '0')}</td>
                 <td className="font-semibold text-navy-800">{m.title}</td>

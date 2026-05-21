@@ -5,6 +5,6 @@ import { redirect } from 'next/navigation'
 
 export async function logout() {
   const store = await cookies()
-  store.delete('payload-token')
+  store.delete('rsipf-session')
   redirect('/login')
 }

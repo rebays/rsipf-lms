@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { login } from '@/app/actions/login'
 
 export const LoginForm = () => {
   const router = useRouter()
@@ -14,21 +15,11 @@ export const LoginForm = () => {
     e.preventDefault()
     setLoading(true)
     setError(null)
-    try {
-      const res = await fetch('/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      })
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}))
-        throw new Error(body.message || 'Sign in failed')
-      }
+    const result = await login(email, password)
+    if (result.ok) {
       router.push('/dashboard')
-      router.refresh()
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Sign in failed')
-    } finally {
+    } else {
+      setError(result.error ?? 'Sign in failed')
       setLoading(false)
     }
   }
